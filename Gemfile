@@ -12,8 +12,17 @@ gem 'puma', '~> 5.6'
 gem 'bootsnap', '~> 1.12', require: false
 
 group :development, :test do
-  gem 'pry-byebug', '~> 3.9'
+  gem 'brakeman', '~> 5.2', require: false
+  gem 'bundler-audit', '~> 0.9', require: false
+  gem 'bundler-leak', '~> 0.3', require: false
+  gem 'haml_lint', '~> 0.40', require: false
+  gem 'lefthook', '~> 1.0', require: false
+  gem 'pry', '~> 0.14'
   gem 'pry-rails', '~> 0.3.9'
+  gem 'traceroute', '~> 0.8', require: false
+  gem 'rubocop', '~> 1.31', require: false
+  gem 'rubocop-performance', '~> 1.14', require: false
+  gem 'rubocop-rails', '~> 2.15', require: false
 end
 
 group :development do
