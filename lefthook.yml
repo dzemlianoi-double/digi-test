@@ -11,5 +11,7 @@ pre-push:
   commands:
     bundle-audit:
       run: bundle exec bundle-audit check --update
-    bundler-leak:
+    bundle-leak:
       run: bundle exec bundle leak update & bundle exec bundle leak
+    traceroute:
+      run: FAIL_ON_ERROR=1 bundle exec rake traceroute
