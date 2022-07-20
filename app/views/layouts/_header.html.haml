@@ -1,0 +1,21 @@
+%nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .container-fluid
+    = link_to t('base.app_name'), root_path, class: 'navbar-brand'
+    %button.navbar-toggler{ 'aria-controls' => 'navbarNavAltMarkup',
+                            'aria-expanded' => 'false',
+                            'aria-label' => 'Toggle navigation',
+                            'data-bs-target' => '#navbarNavAltMarkup',
+                            'data-bs-toggle' => 'collapse',
+                            type: 'button'
+                          }
+      %span.navbar-toggler-icon
+    .collapse.navbar-collapse
+      .navbar-nav
+        - if user_signed_in?
+          %li
+            = link_to t('layout.links.logout'), destroy_user_session_path, { method: :delete, class: "nav-link #{active_class(destroy_user_session_path)}" }
+        - else
+          %li
+            = link_to t('layout.links.login'), new_user_session_path, class: "nav-link #{active_class(new_user_session_path)}"
+          %li
+            = link_to t('layout.links.signup'), new_user_registration_path, class: "nav-link #{active_class(destroy_user_session_path)}"
