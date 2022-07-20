@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Digi-test is an test-task application.
 
-Things you may want to cover:
+## Main system dependencies
 
-* Ruby version
+- Ruby 3.1.2 (Rails 7.0+)
+- PostgreSQL 9.3+
 
-* System dependencies
+## Local deployment
 
-* Configuration
+- Install system dependencies
+- Ask credentials keys (development.key, test.key) from repository maintainers and copy them to /config/credentials/*
+- Setup new user via posgres (See Setup PostgreSQL users for development)
+- Run `bundle exec rails db:create` to create a new database (could be replaced with `bundle exec rails db:setup`)
+- Run `bundle exec rails db:migrate` to run all the migrations (could be replaced with `bundle exec rails db:setup`)
+- Run `bundle exec rails db:seed` to run all the migrations (could be replaced with `bundle exec rails db:setup`)
+- Run `bundle install` to setup all the needed gems 
+- Run `rails s` to run the appliction
 
-* Database creation
+## Setup PostgreSQL users for development/test
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Run `psql postgres`
+- Create database with name of your user (listed as db.username in Rails credentials);
+    - `create database digi;`
+- Create user (listed as db.username and db.password in Rails credentials);
+    - `create user digi with encrypted password 'super-secret-password-local';`
+- Add ability to manage databases to created user
+    - `ALTER USER digi CREATEDB;`
