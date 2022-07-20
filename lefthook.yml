@@ -1,0 +1,22 @@
+pre-commit:
+  parallel: true
+  commands:
+    notify-bundler-outdated:
+      run: bundle outdated
+    rubocop:
+      run: bundle exec rubocop --config .rubocop.yml
+    brakeman:
+      run: bundle exec brakeman --no-pager
+    haml-lint:
+      run: bundle exec haml-lint
+
+
+pre-push:
+  parallel: true
+  commands:
+    bundle-audit:
+      run: bundle exec bundle-audit check --update
+    bundle-leak:
+      run: bundle exec bundle leak update & bundle exec bundle leak
+    traceroute:
+      run: FAIL_ON_ERROR=1 bundle exec rake traceroute
