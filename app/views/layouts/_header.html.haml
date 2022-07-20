@@ -13,7 +13,7 @@
       .navbar-nav
         - if user_signed_in?
           %li
-            = link_to t('layout.links.logout'), destroy_user_session_path, { method: :delete, class: "nav-link #{active_class(destroy_user_session_path)}" }
+            = link_to t('layout.links.logout'), destroy_user_session_path, data: { turbo_method: :delete }, class: "nav-link #{active_class(destroy_user_session_path)}"
         - else
           %li
             = link_to t('layout.links.login'), new_user_session_path, class: "nav-link #{active_class(new_user_session_path)}"

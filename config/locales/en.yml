@@ -6,3 +6,7 @@ en:
       login: Login
       logout: Logout
       signup: Sign Up
+  bank_account:
+    balance: Balance
+    my_bank_account: My Bank Account
+    transactions: Transactions
