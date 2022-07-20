@@ -5,3 +5,9 @@ pre-commit:
       run: bundle outdated
     rubocop:
       run: bundle exec rubocop --config .rubocop.yml
+
+pre-push:
+  parallel: true
+  commands:
+    bundle-audit:
+      run: bundle exec bundle-audit check --update
