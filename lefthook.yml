@@ -5,6 +5,9 @@ pre-commit:
       run: bundle outdated
     rubocop:
       run: bundle exec rubocop --config .rubocop.yml
+    brakeman:
+      run: bundle exec brakeman --no-pager
+
 
 pre-push:
   parallel: true
