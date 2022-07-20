@@ -15,3 +15,7 @@ Devise.setup do |config|
   config.email_regexp = /\A[^@\s]+@[^@\s]+\z/
   config.sign_out_via = :delete
 end
+
+module Devise
+  class Mailer; end # rubocop:disable Lint/EmptyClass
+end
