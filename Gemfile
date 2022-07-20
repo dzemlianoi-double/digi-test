@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
@@ -19,10 +21,10 @@ group :development, :test do
   gem 'lefthook', '~> 1.0', require: false
   gem 'pry', '~> 0.14'
   gem 'pry-rails', '~> 0.3.9'
-  gem 'traceroute', '~> 0.8', require: false
   gem 'rubocop', '~> 1.31', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.15', require: false
+  gem 'traceroute', '~> 0.8', require: false
 end
 
 group :development do
@@ -30,4 +32,4 @@ group :development do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', '~> 2.0', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', '~> 2.0', platforms: %i[mingw mswin x64_mingw jruby]

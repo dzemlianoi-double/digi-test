@@ -1,5 +1,7 @@
 pre-commit:
   parallel: true
   commands:
-    bundler-outdated:
+    notify-bundler-outdated:
       run: bundle outdated
+    rubocop:
+      run: bundle exec rubocop --config .rubocop.yml
