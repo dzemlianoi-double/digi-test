@@ -7,6 +7,8 @@ pre-commit:
       run: bundle exec rubocop --config .rubocop.yml
     brakeman:
       run: bundle exec brakeman --no-pager
+    haml-lint:
+      run: bundle exec haml-lint
 
 
 pre-push:
