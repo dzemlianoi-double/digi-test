@@ -22,6 +22,7 @@ group :development, :test do
   gem 'pry', '~> 0.14'
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop', '~> 1.31', require: false
+  gem 'rubocop-md', '~> 1.0', require: false
   gem 'rubocop-performance', '~> 1.14', require: false
   gem 'rubocop-rails', '~> 2.15', require: false
   gem 'traceroute', '~> 0.8'
