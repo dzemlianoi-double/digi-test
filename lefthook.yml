@@ -10,7 +10,6 @@ pre-commit:
     haml-lint:
       run: bundle exec haml-lint
 
-
 pre-push:
   parallel: true
   commands:

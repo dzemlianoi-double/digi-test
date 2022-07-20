@@ -24,5 +24,8 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-
 /config/credentials/*.key
+
+# Specs
+/spec/examples.txt
+coverage
