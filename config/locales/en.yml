@@ -1,2 +1,8 @@
 en:
-  hello: "Hello world"
+  base:
+    app_name: Digi Test
+  layout:
+    links:
+      login: Login
+      logout: Logout
+      signup: Sign Up

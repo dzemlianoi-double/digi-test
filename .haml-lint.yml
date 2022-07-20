@@ -1,0 +1,8 @@
+exclude:
+  - 'app/views/devise/**/*'
+
+linters:
+  LineLength:
+    max: 180
+  ClassesBeforeIds:
+    enabled: false

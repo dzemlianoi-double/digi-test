@@ -8,9 +8,18 @@ ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 
 gem 'rails', '~> 7.0.3'
 
+# System
 gem 'pg', '~> 1.4'
 gem 'puma', '~> 5.6'
 
+# Authentication and authorization
+gem 'devise', '~> 4.8'
+
+# Views and Assets
+gem 'hamlit', '~> 2.16'
+gem 'webpacker', '~> 5.4'
+
+# Booting of app
 gem 'bootsnap', '~> 1.12', require: false
 
 group :development, :test do
