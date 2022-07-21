@@ -5,7 +5,7 @@ module MoneyTransactions
     attr_accessor :sender, :receiver, :email, :amount_in_cents
 
     validates :email, presence: true
-    validates :email, format: { with: /\A[^@\s]+@[^@\s]+\z/ }, allow_blank: true
+    validates :email, format: { with: User::EMAIL_PATTERN }, allow_blank: true
     validates :amount_in_cents, presence: true
     validates :amount_in_cents, numericality: { only_integer: true, greater_than: 0 }, allow_blank: true
     validate :sender_has_enough_money

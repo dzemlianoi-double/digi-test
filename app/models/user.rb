@@ -20,6 +20,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable, :recoverable and :omniauthable
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
+  EMAIL_PATTERN = /\A[^@\s]+@[^@\s]+\z/
+
   has_one :bank_account, dependent: :destroy
 
   has_many :sent_transactions, class_name: 'MoneyTransaction',
