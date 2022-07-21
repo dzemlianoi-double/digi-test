@@ -10,16 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_07_20_154019) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_21_053750) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "user_bank_accounts", force: :cascade do |t|
-    t.bigint "balance", default: 0, null: false
+  create_table "bank_accounts", force: :cascade do |t|
+    t.bigint "balance_in_cents", default: 0, null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_bank_accounts_on_user_id"
+    t.index ["user_id"], name: "index_bank_accounts_on_user_id"
+  end
+
+  create_table "money_transactions", force: :cascade do |t|
+    t.bigint "sender_bank_account_id", null: false
+    t.bigint "receiver_bank_account_id", null: false
+    t.integer "amount_in_cents", null: false
+    t.integer "cached_sender_balance_in_cents", null: false
+    t.integer "cached_receiver_balance_in_cents", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["receiver_bank_account_id"], name: "index_money_transactions_on_receiver_bank_account_id"
+    t.index ["sender_bank_account_id"], name: "index_money_transactions_on_sender_bank_account_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,4 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_20_154019) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "bank_accounts", "users"
+  add_foreign_key "money_transactions", "bank_accounts", column: "receiver_bank_account_id"
+  add_foreign_key "money_transactions", "bank_accounts", column: "sender_bank_account_id"
 end
