@@ -12,6 +12,9 @@ gem 'rails', '~> 7.0.3'
 gem 'pg', '~> 1.4'
 gem 'puma', '~> 5.6'
 
+# Business logic handling
+gem 'interactor', '~> 3.1'
+
 # Authentication and authorization
 gem 'devise', '~> 4.8'
 

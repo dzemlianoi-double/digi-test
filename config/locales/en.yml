@@ -1,12 +1,30 @@
 en:
   base:
     app_name: Digi Test
+  bank_account:
+    balance: Balance
+    form:
+      amount_in_cents: Amount in cents
+      email: Email
+      send: Send
+    my_bank_account: My Bank Account
+    transactions: Transactions
+    transfer_money: Transfer money
+  flashes:
+    notice:
+      money_sent: Money has transferred successfully
+  forms:
+    errors:
+      money_transactions:
+        create:
+          base:
+            something_went_wrong: Something went wrong with your money transaction. No transfers were done. Please try again later
+          amount_in_cents:
+            not_enough: There is no enough money for the transfer
+          receiver_bank_account_id:
+            email_doesnt_belong: doesn't belong to any existing user
   layout:
     links:
       login: Login
       logout: Logout
       signup: Sign Up
-  bank_account:
-    balance: Balance
-    my_bank_account: My Bank Account
-    transactions: Transactions
