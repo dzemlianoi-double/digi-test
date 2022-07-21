@@ -22,6 +22,9 @@ gem 'webpacker', '~> 5.4'
 # Booting of app
 gem 'bootsnap', '~> 1.12', require: false
 
+# DB utils
+gem 'seedbank', '~> 0.5'
+
 group :development, :test do
   gem 'brakeman', '~> 5.2', require: false
   gem 'bundler-audit', '~> 0.9', require: false
