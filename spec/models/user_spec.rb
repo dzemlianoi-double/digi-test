@@ -1,5 +1,20 @@
 # frozen_string_literal: true
 
+# == Schema Information
+#
+# Table name: users
+#
+#  id                  :bigint           not null, primary key
+#  email               :string           not null
+#  encrypted_password  :string           not null
+#  remember_created_at :datetime
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#
 RSpec.describe User do
   describe 'columns' do
     it { is_expected.to have_db_column(:email) }
@@ -12,7 +27,7 @@ RSpec.describe User do
   end
 
   describe 'relations' do
-    it { is_expected.to have_one(:user_bank_account).dependent(:destroy) }
+    it { is_expected.to have_one(:bank_account).dependent(:destroy) }
   end
 
   describe 'callbacks' do
@@ -21,7 +36,7 @@ RSpec.describe User do
     it 'creates default bank account after user create' do
       user.save
 
-      expect(user.reload.user_bank_account).to be_present
+      expect(user.reload.bank_account).to be_present
     end
   end
 end

@@ -4,4 +4,6 @@
 
 DEFAULT_BALANCE = 1_000_000
 
-BankAccount.update_all(balance: DEFAULT_BALANCE) unless BankAccount.where.not(balance: 0).exists? # rubocop:disable Rails/SkipsModelValidations
+unless BankAccount.where.not(balance_in_cents: 0).exists?
+  BankAccount.update_all(balance_in_cents: DEFAULT_BALANCE) # rubocop:disable Rails/SkipsModelValidations
+end

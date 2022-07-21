@@ -16,7 +16,7 @@ User.create_with(password: 'password').find_or_create_by(email: 'user1@example.c
 # # FactoryBot.create_list(:user, USERS_COUNT, password: 'password')
 
 # # Update bank accounts
-# # BankAccount.update_all(balance: 1_000_000) unless BankAccount.where.not(balance: 0).exists?
+# # BankAccount.update_all(balance_in_cents: 1_000_000) unless BankAccount.where.not(balance_in_cents: 0).exists?
 
 # # Random transactions
 # users = User.where.not(id: user.id)
@@ -25,33 +25,33 @@ User.create_with(password: 'password').find_or_create_by(email: 'user1@example.c
 # TRANSACTIONS_COUNT.times do
 #   # Received transaction
 
-#   received_amount = rand(1..10000)
+#   received_amount_in_cents = rand(1..10000)
 #   sender_bank_account = users.sample.bank_account
 
-#   cached_sender_balance = sender_bank_account.balance - received_amount
-#   cached_receiver_balance = bank_account.balance + received_amount
+#   cached_sender_balance_in_cents = sender_bank_account.balance_in_cents - received_amount_in_cents
+#   cached_receiver_balance_in_cents = bank_account.balance_in_cents + received_amount_in_cents
 
 #   FactoryBot.create(
 #     :money_transaction,
-#     amount: received_amount,
-#     cached_sender_balance: cached_sender_balance,
-#     cached_receiver_balance: cached_receiver_balance,
+#     amount_in_cents: received_amount_in_cents,
+#     cached_sender_balance_in_cents: cached_sender_balance_in_cents,
+#     cached_receiver_balance_in_cents: cached_receiver_balance_in_cents,
 #     sender_bank_account: sender_bank_account,
 #     receiver_bank_account: bank_account,
 #   )
 
 #   # Sent transaction
-#   sent_amount = rand(1..10000)
+#   sent_amount_in_cents = rand(1..10000)
 #   receiver_bank_account = users.sample.bank_account
 
-#   cached_sender_balance = bank_account.balance - sent_amount
-#   cached_receiver_balance = receiver_bank_account.balance + sent_amount
+#   cached_sender_balance_in_cents = bank_account.balance_in_cents - sent_amount_in_cents
+#   cached_receiver_balance_in_cents = receiver_bank_account.balance_in_cents + sent_amount_in_cents
 
 #   FactoryBot.create(
 #     :money_transaction,
-#     amount: sent_amount,
-#     cached_sender_balance: cached_sender_balance,
-#     cached_receiver_balance: cached_receiver_balance,
+#     amount_in_cents: sent_amount_in_cents,
+#     cached_sender_balance_in_cents: cached_sender_balance_in_cents,
+#     cached_receiver_balance_in_cents: cached_receiver_balance_in_cents,
 #     sender_bank_account: bank_account,
 #     receiver_bank_account: receiver_bank_account,
 #   )

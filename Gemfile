@@ -16,7 +16,9 @@ gem 'puma', '~> 5.6'
 gem 'devise', '~> 4.8'
 
 # Views and Assets
+gem 'draper', '~> 4.0'
 gem 'hamlit', '~> 2.16'
+gem 'pagy', '~> 5.10'
 gem 'webpacker', '~> 5.4'
 
 # Booting of app
@@ -44,6 +46,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'annotate', '~> 3.2'
   gem 'listen', '~> 3.7'
 end
 

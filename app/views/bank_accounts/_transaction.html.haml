@@ -1,0 +1,12 @@
+%tr.text-center
+  %td.display-6.bold{ class: transaction.operation_type_class }
+    %strong
+      = transaction.operation_type
+  %td
+    = transaction.operation_email
+  %td
+    = transaction.amount
+  %td
+    = transaction.left_on_balance
+  %td
+    = localize(transaction.created_at, format: :long)
