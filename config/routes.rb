@@ -3,5 +3,7 @@
 Rails.application.routes.draw do
   devise_for(:users, only: %i[sessions registrations])
 
-  root to: redirect('users/sign_in')
+  resource :bank_account, only: %i[show]
+
+  root to: 'bank_accounts#show'
 end
