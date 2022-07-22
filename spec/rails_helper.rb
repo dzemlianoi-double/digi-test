@@ -7,6 +7,7 @@ require_relative '../config/environment'
 abort('The Rails environment is running in production mode!') if Rails.env.production?
 
 require 'rspec/rails'
+require 'support/capybara'
 
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |file| require file }
 
@@ -23,4 +24,5 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Warden::Test::Helpers, type: :feature
 end

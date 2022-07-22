@@ -4,7 +4,7 @@
     %br/
     = email_field :transaction, :email, class: "form-control #{transaction.errors.include?(:receiver_bank_account_id) && 'is-invalid'}"
     - if transaction.errors.include?(:receiver_bank_account_id)
-      .invalid-feedback.text-start
+      .invalid-feedback.text-start.error-receiver-spec
         - transaction.errors.messages_for(:receiver_bank_account_id).each do |error|
           = error
           %br
@@ -13,7 +13,7 @@
     %br/
     = text_field :transaction, :amount_in_cents, class: "form-control #{transaction.errors.include?(:amount_in_cents) && 'is-invalid'}"
     - if transaction.errors.include?(:amount_in_cents)
-      .invalid-feedback.text-start
+      .invalid-feedback.text-start.error-amount-spec
         - transaction.errors.messages_for(:amount_in_cents).each do |error|
           = error
           %br

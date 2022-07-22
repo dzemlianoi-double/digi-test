@@ -55,4 +55,5 @@ jobs:
           RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_MASTER_KEY }}
           DB_USERNAME: digi-test
           DB_PASSWORD: digi-test
+          CI: true
         run: bundle exec rspec   

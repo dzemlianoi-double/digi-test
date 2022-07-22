@@ -54,10 +54,14 @@ group :development do
 end
 
 group :test do
+  gem 'capybara', '~> 3.37'
   gem 'rails-controller-testing', '~> 1.0'
   gem 'rspec-rails', '~> 5.1'
   gem 'shoulda-matchers', '~> 5.1'
   gem 'simplecov', '~> 0.21', require: false
+  gem 'site_prism', '~> 3.7'
+  gem 'webdrivers', '~> 5.0'
+  gem 'webmock', '~> 3.14'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
