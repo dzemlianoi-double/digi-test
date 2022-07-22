@@ -12,6 +12,9 @@ gem 'rails', '~> 7.0.3'
 gem 'pg', '~> 1.4'
 gem 'puma', '~> 5.6'
 
+# Business logic handling
+gem 'interactor', '~> 3.1'
+
 # Authentication and authorization
 gem 'devise', '~> 4.8'
 
@@ -51,6 +54,7 @@ group :development do
 end
 
 group :test do
+  gem 'rails-controller-testing', '~> 1.0'
   gem 'rspec-rails', '~> 5.1'
   gem 'shoulda-matchers', '~> 5.1'
   gem 'simplecov', '~> 0.21', require: false

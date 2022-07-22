@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe MoneyTransactionDecorator, type: :decorator do # rubocop:disable Metrics/BlockLength
+RSpec.describe MoneyTransactionDecorator, type: :decorator do
   subject(:money_transaction) do
     create(:money_transaction,
            receiver_bank_account: receiver.bank_account,
