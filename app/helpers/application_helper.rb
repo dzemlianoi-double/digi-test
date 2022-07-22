@@ -17,16 +17,4 @@ module ApplicationHelper
   def flash_class(level)
     FLASH_CLASSES[level.to_sym]
   end
-
-  def invalid_input_attribute_class_for(attribute, model:)
-    return '' if model.errors.exclude?(attribute)
-
-    'is_invalid'
-  end
-
-  def invalid_label_attribute_class_for(attribute, model:)
-    return '' if model.errors.exclude?(attribute)
-
-    'invalid-feedback'
-  end
 end

@@ -28,7 +28,7 @@ FactoryBot.define do
     amount_in_cents { rand(1...1000) }
     cached_sender_balance_in_cents { 1000 }
     cached_receiver_balance_in_cents { 1000 }
-    association(:sender_bank_account)
-    association(:receiver_bank_account)
+    association :sender_bank_account, factory: :bank_account
+    association :receiver_bank_account, factory: :bank_account
   end
 end

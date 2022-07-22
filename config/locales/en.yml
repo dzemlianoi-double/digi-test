@@ -2,14 +2,20 @@ en:
   base:
     app_name: Digi Test
   bank_account:
+    amount: Amount
     balance: Balance
+    email: Email
+    empty_state: There are no transactions yet
     form:
       amount_in_cents: Amount in cents
       email: Email
       send: Send
+    left_on_balance: Left on balance
     my_bank_account: My Bank Account
+    sent_at: Sent at
     transactions: Transactions
     transfer_money: Transfer money
+    type: Type
   flashes:
     notice:
       money_sent: Money has transferred successfully

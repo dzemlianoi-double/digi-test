@@ -15,5 +15,23 @@ RSpec.describe ApplicationHelper do
 
       expect(helper.active_class(current_path)).to eq ''
     end
+
+    describe '#flash_class' do
+      it 'return correct class list for notice' do
+        expect(helper.flash_class(:notice)).to eq('alert alert-success')
+      end
+
+      it 'return correct class list for success' do
+        expect(helper.flash_class(:success)).to eq('alert alert-success')
+      end
+
+      it 'return correct class list for error' do
+        expect(helper.flash_class(:error)).to eq('alert alert-danger')
+      end
+
+      it 'return correct class list for alert' do
+        expect(helper.flash_class(:alert)).to eq('alert alert-danger')
+      end
+    end
   end
 end

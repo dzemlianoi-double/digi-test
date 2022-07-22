@@ -7,7 +7,7 @@ RSpec.shared_examples 'authorizable' do
     it 'responds with 200' do
       sign_in(user)
 
-      expect(subject).to have_http_status(:ok)
+      expect(subject).not_to redirect_to(new_user_session_path)
     end
   end
 

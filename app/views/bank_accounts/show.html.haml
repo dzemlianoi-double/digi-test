@@ -6,47 +6,31 @@
   .col-7
     %h2.text-center
       = t('bank_account.transactions')
-    %table.table.mt-5
-      %thead
-        %tr.text-center
-          %th
-            = t('bank_account.type')
-          %th
-            = t('bank_account.email')
-          %th
-            = t('bank_account.amount_in_cents')
-          %th
-            = t('bank_account.left_on_balance')
-          %th
-            = t('bank_account.sent_at')
-      %tbody
-        - @presenter.transactions.each do |transaction|
-          = render 'bank_accounts/transaction', transaction:
-    != pagy_bootstrap_nav(@presenter.paginator)
+    - if @presenter.transactions.present?
+      %table.table.mt-5
+        %thead
+          %tr.text-center
+            %th
+              = t('bank_account.type')
+            %th
+              = t('bank_account.email')
+            %th
+              = t('bank_account.amount')
+            %th
+              = t('bank_account.left_on_balance')
+            %th
+              = t('bank_account.sent_at')
+        %tbody
+          - @presenter.transactions.each do |transaction|
+            = render 'bank_accounts/transaction', transaction:
+      != pagy_bootstrap_nav(@presenter.paginator)
+    - else
+      %h4.mt-5.text-center
+        = t('bank_account.empty_state')
   .col-5.offset-col-1
     %h2.text-center #{t('bank_account.balance')}: #{@presenter.bank_account.balance}
     %h3.text-center.mt-5
       = t('bank_account.transfer_money')
     .row
       .col-md-6.offset-md-3.text-center
-        = form_for(@presenter.new_transaction) do |f|
-          .field.mb-3.mt-3
-            = label_tag :email, t('bank_account.form.email'), class: 'form-label'
-            %br/
-            = email_field :transaction, :email, class: "form-control #{@presenter.new_transaction.errors.include?(:receiver_bank_account_id) && 'is-invalid'}"
-            - if @presenter.new_transaction.errors.include?(:receiver_bank_account_id)
-              .invalid-feedback.text-start
-                - @presenter.new_transaction.errors.messages_for(:receiver_bank_account_id).each do |error|
-                  = error
-                  %br
-          .field.mb-3.mt-3
-            = label_tag :amount_in_cents, t('bank_account.form.amount_in_cents'), class: 'form-label'
-            %br/
-            = text_field :transaction, :amount_in_cents, class: "form-control #{@presenter.new_transaction.errors.include?(:amount_in_cents) && 'is-invalid'}"
-            - if @presenter.new_transaction.errors.include?(:amount_in_cents)
-              .invalid-feedback.text-start
-                - @presenter.new_transaction.errors.messages_for(:amount_in_cents).each do |error|
-                  = error
-                  %br
-          .actions.mb-3
-            = f.submit t('bank_account.form.send'), class: 'btn btn-primary'
+        = render 'bank_accounts/new_transaction_form', transaction: @presenter.new_transaction

@@ -13,7 +13,7 @@ module MoneyTransactions
         end
       rescue ActiveRecord::RecordInvalid
         context.model.errors.add(:base, I18n.t('forms.errors.money_transactions.create.base.something_went_wrong'))
-        context.fail
+        context.fail!
       end
 
       private
