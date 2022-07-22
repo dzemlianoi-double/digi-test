@@ -2,6 +2,8 @@
 
 Digi-test is an test-task application.
 
+<img width="1786" alt="image" src="https://user-images.githubusercontent.com/36458127/180449526-46009608-5073-43c3-abee-e37aad628b4a.png">
+
 ## Main system dependencies
 
 - Ruby 3.1.2 (Rails 7.0+)
