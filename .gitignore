@@ -24,4 +24,18 @@
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
+/config/credentials/*.key
+
+# Specs
+/spec/examples.txt
+coverage
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Local
+.DS_Store

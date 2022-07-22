@@ -1,0 +1,39 @@
+.row
+  .col-md-12
+    %h1.d-flex.justify-content-center.mt-5
+      = t('bank_account.my_bank_account')
+.row.justify-content-start.mt-5
+  .col-7
+    %h2.text-center
+      = t('bank_account.transactions')
+    - if @presenter.transactions.present?
+      %table.table.mt-5
+        %thead
+          %tr.text-center
+            %th
+              = t('bank_account.type')
+            %th
+              = t('bank_account.email')
+            %th
+              = t('bank_account.amount')
+            %th
+              = t('bank_account.left_on_balance')
+            %th
+              = t('bank_account.sent_at')
+        %tbody
+          - @presenter.transactions.each do |transaction|
+            = render 'bank_accounts/transaction', transaction:
+      != pagy_bootstrap_nav(@presenter.paginator)
+    - else
+      %h4.mt-5.text-center
+        = t('bank_account.empty_state')
+  .col-5.offset-col-1
+    %h2.text-center
+      #{t('bank_account.balance')}:
+      %span.balance-spec
+        = @presenter.bank_account.balance
+    %h3.text-center.mt-5
+      = t('bank_account.transfer_money')
+    .row
+      .col-md-6.offset-md-3.text-center
+        = render 'bank_accounts/new_transaction_form', transaction: @presenter.new_transaction

@@ -1,3 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  devise_for(:users, only: %i[sessions registrations])
+
+  resource :bank_account, only: %i[show]
+  resources :money_transactions, only: %i[create]
+
+  root to: 'bank_accounts#show'
 end

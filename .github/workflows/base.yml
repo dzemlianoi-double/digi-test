@@ -1,0 +1,59 @@
+name: Base
+on: push
+
+jobs:
+  verify:
+    name: Build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: digi-test
+          POSTGRES_PASSWORD: digi-test
+          POSTGRES_DB: digi_test_development
+          POSTGRES_PORT: 5432
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Set up Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.16.0
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+          cmd: install
+      - name: Setup test database
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          DB_USERNAME: digi-test
+          DB_PASSWORD: digi-test
+        run: |
+          bin/rails db:create
+          bin/rails db:migrate
+      - name: Run linters
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          DB_USERNAME: digi-test
+          DB_PASSWORD: digi-test
+        run: |
+          bundle config unset deployment
+          bundle exec lefthook run pre-commit
+          bundle exec lefthook run pre-push
+      - name: Run tests
+        env:
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_TEST_MASTER_KEY }}
+          DB_USERNAME: digi-test
+          DB_PASSWORD: digi-test
+          CI: true
+        run: bundle exec rspec   

@@ -1,40 +1,68 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
+
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.2'
+ruby(File.read(File.join(File.dirname(__FILE__), '.ruby-version')).strip)
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 7.0'
-# Use postgresql as the database for Active Record
-gem 'pg', '~> 1.1'
-# Use Puma as the app server
-gem 'puma', '~> 5.0'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-# gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
-# Use Active Model has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'rails', '~> 7.0.3'
 
-# Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+# System
+gem 'pg', '~> 1.4'
+gem 'puma', '~> 5.6'
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.4.4', require: false
+# Business logic handling
+gem 'interactor', '~> 3.1'
 
-# Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+# Authentication and authorization
+gem 'devise', '~> 4.8'
+
+# Views and Assets
+gem 'draper', '~> 4.0'
+gem 'hamlit', '~> 2.16'
+gem 'pagy', '~> 5.10'
+gem 'webpacker', '~> 5.4'
+
+# Booting of app
+gem 'bootsnap', '~> 1.12', require: false
+
+# DB utils
+gem 'seedbank', '~> 0.5'
 
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'brakeman', '~> 5.2', require: false
+  gem 'bundler-audit', '~> 0.9', require: false
+  gem 'bundler-leak', '~> 0.3', require: false
+  gem 'factory_bot_rails', '~> 6.2', require: false
+  gem 'ffaker', '~> 2.21', require: false
+  gem 'haml_lint', '~> 0.40', require: false
+  gem 'lefthook', '~> 1.0', require: false
+  gem 'pry', '~> 0.14'
+  gem 'pry-rails', '~> 0.3.9'
+  gem 'rubocop', '~> 1.31', require: false
+  gem 'rubocop-md', '~> 1.0', require: false
+  gem 'rubocop-performance', '~> 1.14', require: false
+  gem 'rubocop-rails', '~> 2.15', require: false
+  gem 'rubocop-rspec', '~> 2.12', require: false
+  gem 'traceroute', '~> 0.8'
 end
 
 group :development do
-  gem 'listen', '~> 3.3'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  gem 'annotate', '~> 3.2'
+  gem 'listen', '~> 3.7'
+end
+
+group :test do
+  gem 'capybara', '~> 3.37'
+  gem 'rails-controller-testing', '~> 1.0'
+  gem 'rspec-rails', '~> 5.1'
+  gem 'shoulda-matchers', '~> 5.1'
+  gem 'simplecov', '~> 0.21', require: false
+  gem 'site_prism', '~> 3.7'
+  gem 'webdrivers', '~> 5.0'
+  gem 'webmock', '~> 3.14'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', '~> 2.0', platforms: %i[mingw mswin x64_mingw jruby]

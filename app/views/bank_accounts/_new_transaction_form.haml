@@ -1,0 +1,21 @@
+= form_for(transaction) do |f|
+  .field.mb-3.mt-3
+    = label_tag :email, t('bank_account.form.email'), class: 'form-label'
+    %br/
+    = email_field :transaction, :email, class: "form-control #{transaction.errors.include?(:receiver_bank_account_id) && 'is-invalid'}"
+    - if transaction.errors.include?(:receiver_bank_account_id)
+      .invalid-feedback.text-start.error-receiver-spec
+        - transaction.errors.messages_for(:receiver_bank_account_id).each do |error|
+          = error
+          %br
+  .field.mb-3.mt-3
+    = label_tag :amount_in_cents, t('bank_account.form.amount_in_cents'), class: 'form-label'
+    %br/
+    = text_field :transaction, :amount_in_cents, class: "form-control #{transaction.errors.include?(:amount_in_cents) && 'is-invalid'}"
+    - if transaction.errors.include?(:amount_in_cents)
+      .invalid-feedback.text-start.error-amount-spec
+        - transaction.errors.messages_for(:amount_in_cents).each do |error|
+          = error
+          %br
+  .actions.mb-3
+    = f.submit t('bank_account.form.send'), class: 'btn btn-primary'
